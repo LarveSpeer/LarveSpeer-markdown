@@ -13,13 +13,13 @@ marked.setOptions({
 	sanitize: true,
 	smartLists: true,
 	smartypants: false
-});
+})
 
 module.exports = function(pathToWorkingDir){
 	var app = express()
 	app.locals.path = pathToWorkingDir
-	console.log(path.resolve(app.locals.path, "config.js"))
 	app.locals.config = require(path.resolve(app.locals.path, "config.js"))
+
 
 	// this function provides the HTML code, which one will be displayed to the page
 	app.html = function() {
