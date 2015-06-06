@@ -1,8 +1,9 @@
 /* @flow */
 
 var fs = require("fs")
+var path = require("path")
 var express = require("express")
-var marked = require('marked');
+var marked = require('marked')
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
@@ -14,13 +15,16 @@ marked.setOptions({
 	smartypants: false
 });
 
-module.exports = function(path){
+module.exports = function(pathToWorkingDir){
 	var app = express()
-
+	app.locals.path = pathToWorkingDir
+	console.log(path.resolve(app.locals.path, "config.js"))
+	app.locals.config = require(path.resolve(app.locals.path, "config.js"))
 
 	// this function provides the HTML code, which one will be displayed to the page
 	app.html = function() {
-		return marked("")
+		var indexPath = path.resolve(app.locals.path, app.locals.config.index)
+		return marked( fs.readFileSync(indexPath).toString() )
 	}
 
 	// here we can return LESS css, which will only effect the page HTML code
