@@ -20,6 +20,8 @@ module.exports = function(pathToWorkingDir){
 	app.locals.path = pathToWorkingDir
 	app.locals.config = require(path.resolve(app.locals.path, "config.js"))
 
+	app.use(express.static(app.locals.path))
+	
 
 	// this function provides the HTML code, which one will be displayed to the page
 	app.html = function() {
