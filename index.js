@@ -12,7 +12,10 @@ marked.setOptions({
 	pedantic: false,
 	sanitize: true,
 	smartLists: true,
-	smartypants: false
+	smartypants: false,
+	highlight: function (code) {
+		return require('highlight.js').highlightAuto(code).value;
+	}
 })
 
 module.exports = function(pathToWorkingDir){
@@ -21,17 +24,17 @@ module.exports = function(pathToWorkingDir){
 	app.locals.config = require(path.resolve(app.locals.path, "config.js"))
 
 	app.use(express.static(app.locals.path))
-	
 
 	// this function provides the HTML code, which one will be displayed to the page
 	app.html = function() {
 		var indexPath = path.resolve(app.locals.path, app.locals.config.index)
+
 		return marked( fs.readFileSync(indexPath).toString() )
 	}
 
 	// here we can return LESS css, which will only effect the page HTML code
 	app.less = function(){
-		return ""
+		return fs.readFileSync(path.resolve(__dirname, "node_modules", "highlight.js", "styles", "monokai_sublime.css")).toString()
 	}
 
 
