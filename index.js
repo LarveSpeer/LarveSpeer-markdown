@@ -31,6 +31,13 @@ module.exports = function(pathToWorkingDir){
 
 		return marked( fs.readFileSync(indexPath).toString() )
 	}
+	app.htmlModerator = function() {
+		if (app.locals.config.indexModerator){
+			var indexPath = path.resolve(app.locals.path, app.locals.config.indexModerator)
+			return marked( fs.readFileSync(indexPath).toString() )
+		}
+		return ""
+	}
 
 	// here we can return LESS css, which will only effect the page HTML code
 	app.less = function(){
