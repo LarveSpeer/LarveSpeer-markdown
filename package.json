@@ -1,18 +1,11 @@
 {
   "name": "LarveSpeer-markdown",
-  "version": "0.0.0",
-  "description": "## Description Render a markdown file.",
+  "version": "0.0.1",
+  "description": "Description Render a markdown file.",
   "private": true,
   "dependencies": {
     "express": "x",
     "marked": "x",
     "highlight.js": "x"
   },
-  "gitHead": "e7ded83f06808205bfc3accf1ddf7b3cf17bf7ca",
-  "readme": "# LarveSpeer-markdown\n\n## Description\nRender a markdown file.\n\n\n## Config\n\n### `index`\nPath to the markdown file\n",
-  "readmeFilename": "README.md",
-  "_id": "LarveSpeer-markdown@0.0.0",
-  "_shasum": "c5e2c1a471b8adc9e6ed166a4b6b45ebf1c10af3",
-  "_from": "git+https://github.com/LarveSpeer/LarveSpeer-markdown.git",
-  "_resolved": "git+https://github.com/LarveSpeer/LarveSpeer-markdown.git#e7ded83f06808205bfc3accf1ddf7b3cf17bf7ca"
 }
